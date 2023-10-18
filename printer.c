@@ -6,7 +6,7 @@
  */
 int print_characters(va_list args)
 {
-	_putchar(va_arg(args, int));
+	putchar(va_arg(args, int));
 	return (1);
 }
 /**
@@ -25,7 +25,7 @@ int print_strings(va_list args)
 	}
 	while (*str)
 	{
-		_putchar(*str);
+		putchar(*str);
 		str++;
 		count++;
 	}
@@ -44,7 +44,7 @@ int print_integers(va_list args)
 
 	if (num < 0)
 	{
-		_putchar('-');
+		putchar('-');
 		num = -num;
 		count++;
 	}
@@ -54,7 +54,7 @@ int print_integers(va_list args)
 	}
 	while (power > 0)
 	{
-		_putchar((num / power) + '0');
+		putchar((num / power) + '0');
 		num %= power;
 		power /= 10;
 		count++;
@@ -74,7 +74,7 @@ int print_decimals(va_list args)
 
 	if (num < 0)
 	{
-		_putchar('-');
+		putchar('-');
 		num = -num;
 		count++;
 	}
@@ -84,7 +84,7 @@ int print_decimals(va_list args)
 	}
 	while (power > 0)
 	{
-		_putchar((num / power) + '0');
+		putchar((num / power) + '0');
 		num %= power;
 		power /= 10;
 		count++;
@@ -99,5 +99,5 @@ int print_decimals(va_list args)
 int print_percent(va_list args)
 {
 	(void)args;
-	return (_putchar('%'));
+	return (putchar('%'));
 }

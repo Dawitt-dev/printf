@@ -15,12 +15,12 @@ int _printf(const char *format, ...)
 	{
 		if (*ptr != '%')
 		{
-			_putchar(*ptr);
+			putchar(*ptr);
 			count++;
 		}
 		else if (*(ptr + 1) == '%')
 		{
-			_putchar('%');
+			putchar('%');
 			count++;
 			ptr++;
 		}
@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			_putchar(*ptr);
+			putchar(*ptr);
 			count++;
 		}
 	}
