@@ -1,34 +1,35 @@
 #include "main.h"
-
-
-struct printer
-{
-        char type;
-        int (*func)(va_list);
-};
-  
-	
+/**
+ * struct printer - prints
+ *@type: type specifier
+ *@func: function associated
+ */
 	struct printer  printers[] = {
-                {'c', print_characters},
-                {'s', print_strings},
-                {'%', print_percent},
-                {'d', print_decimals},
-                {'i', print_integers},
-                {'\0', NULL}
-        };
-
+		{'c', print_characters},
+		{'s', print_strings},
+		{'%', print_percent},
+		{'d', print_decimals},
+		{'i', print_integers},
+		{'\0', NULL}
+	};
+/**
+ * get_function - gets function
+ *
+ *@type: type specifier
+ * Return: NULL
+ */
 int (*get_function(char type))(va_list)
 {
-	struct printer *ptr = printers;
+
 	int j = 0;
-	
-	while (ptr[j].type != '\0')
+
+	while (printers[j].type != '\0')
 	{
-		if (ptr[j].type == type)
+		if (printers[j].type == type)
 		{
-			return (ptr[j].func);
+			return (printers[j].func);
 		}
 		j++;
 	}
-	return(NULL); 
+	return (NULL);
 }

@@ -1,16 +1,17 @@
 #include "main.h"
 /**
- * print_char - Prints a character
+ * print_characters - Prints a character
  *@args: arguments list
  * Return: 1
  */
 int print_characters(va_list args)
 {
-	putchar(va_arg(args, int));
+	char c = va_arg(args, int);
+	write(1, &c, 1);
 	return (1);
 }
 /**
- * print_string - prints a string.
+ * print_strings - prints a string.
  *@args: arguments list
  * Return: number of characters printed
  */
@@ -25,15 +26,15 @@ int print_strings(va_list args)
 	}
 	while (*str)
 	{
-		putchar(*str);
+		write(1, str, 1);
 		str++;
 		count++;
 	}
 	return (count);
 }
 /**
- * print_int - prints integers
- *@args: argument list 
+ * print_integers - prints integers
+ *@args: argument list
  * Return: number of characters printed
  */
 int print_integers(va_list args)
@@ -44,7 +45,7 @@ int print_integers(va_list args)
 
 	if (num < 0)
 	{
-		putchar('-');
+		write(1, "-", 1);
 		num = -num;
 		count++;
 	}
@@ -54,19 +55,20 @@ int print_integers(va_list args)
 	}
 	while (power > 0)
 	{
-		putchar((num / power) + '0');
+		char digit = (num / power) + '0';
+		write(1, &digit, 1);
 		num %= power;
 		power /= 10;
 		count++;
 	}
 	return (count);
 }
-int print_decimals(va_list args)
 /**
  * print_decimals - prints decimals
- *@args: argument list 
+ *@args: argument list
  * Return: number of characters printed
  */
+int print_decimals(va_list args)
 {
 	int num = va_arg(args, int);
 	int count = 0;
@@ -74,7 +76,7 @@ int print_decimals(va_list args)
 
 	if (num < 0)
 	{
-		putchar('-');
+		write(1, "-", 1);
 		num = -num;
 		count++;
 	}
@@ -84,7 +86,8 @@ int print_decimals(va_list args)
 	}
 	while (power > 0)
 	{
-		putchar((num / power) + '0');
+		char digit = (num / power) + '0';
+		write(1, &digit, 1);
 		num %= power;
 		power /= 10;
 		count++;
@@ -98,6 +101,7 @@ int print_decimals(va_list args)
  */
 int print_percent(va_list args)
 {
+	char percent = '%';
 	(void)args;
-	return (putchar('%'));
+	return (write(1, &percent, 1));
 }

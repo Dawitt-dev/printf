@@ -7,7 +7,7 @@
 int _printf(const char *format, ...)
 {
 	va_list args;
-	unsigned int count = 0;
+	int count = 0;
 	const char *ptr;
 
 	va_start(args, format);
@@ -15,12 +15,12 @@ int _printf(const char *format, ...)
 	{
 		if (*ptr != '%')
 		{
-			putchar(*ptr);
+			write(1, ptr, 1);
 			count++;
 		}
 		else if (*(ptr + 1) == '%')
 		{
-			putchar('%');
+			write(1, "%", 1);
 			count++;
 			ptr++;
 		}
@@ -31,7 +31,7 @@ int _printf(const char *format, ...)
 		}
 		else
 		{
-			putchar(*ptr);
+			write(1, ptr, 1);
 			count++;
 		}
 	}
