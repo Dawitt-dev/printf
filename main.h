@@ -15,11 +15,11 @@ int print_decimals(va_list args);
  *@type: type specifier
  *@func: function associated
  */
-struct printer
+typedef struct printer
 {
 	char type;
 	int (*func)(va_list);
-};
+} printer_t;
 
 int (*get_function(char type))(va_list);
 #endif

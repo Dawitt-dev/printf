@@ -7,6 +7,7 @@
 int print_characters(va_list args)
 {
 	char c = va_arg(args, int);
+
 	write(1, &c, 1);
 	return (1);
 }
@@ -56,6 +57,7 @@ int print_integers(va_list args)
 	while (power > 0)
 	{
 		char digit = (num / power) + '0';
+
 		write(1, &digit, 1);
 		num %= power;
 		power /= 10;
@@ -87,6 +89,7 @@ int print_decimals(va_list args)
 	while (power > 0)
 	{
 		char digit = (num / power) + '0';
+
 		write(1, &digit, 1);
 		num %= power;
 		power /= 10;
